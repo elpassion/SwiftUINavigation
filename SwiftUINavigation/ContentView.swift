@@ -104,6 +104,7 @@ class NavigationItemViewController<Content: View>: UIHostingController<Content>,
   init(_ item: NavigationItem, rootView: Content) {
     self.item = item
     super.init(rootView: rootView)
+    self.navigationItem.title = item.title
   }
 
   required init?(coder aDecoder: NSCoder) { nil }
