@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31CF91AD23DD2BD0002C31DC /* Prototype2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CF91AC23DD2BD0002C31DC /* Prototype2.swift */; };
 		31F7FFB223DA79D7003038AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7FFB123DA79D7003038AD /* AppDelegate.swift */; };
 		31F7FFB423DA79D7003038AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7FFB323DA79D7003038AD /* SceneDelegate.swift */; };
 		31F7FFB623DA79D7003038AD /* Prototype1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7FFB523DA79D7003038AD /* Prototype1.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31CF91AC23DD2BD0002C31DC /* Prototype2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype2.swift; sourceTree = "<group>"; };
 		31F7FFAE23DA79D7003038AD /* SwiftUINavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUINavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F7FFB123DA79D7003038AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31F7FFB323DA79D7003038AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				31F7FFBF23DA79D8003038AD /* Info.plist */,
 				31F7FFBC23DA79D8003038AD /* LaunchScreen.storyboard */,
 				31F7FFB523DA79D7003038AD /* Prototype1.swift */,
+				31CF91AC23DD2BD0002C31DC /* Prototype2.swift */,
 				31F7FFB323DA79D7003038AD /* SceneDelegate.swift */,
 			);
 			path = SwiftUINavigation;
@@ -134,6 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31CF91AD23DD2BD0002C31DC /* Prototype2.swift in Sources */,
 				31F7FFB223DA79D7003038AD /* AppDelegate.swift in Sources */,
 				31F7FFB423DA79D7003038AD /* SceneDelegate.swift in Sources */,
 				31F7FFB623DA79D7003038AD /* Prototype1.swift in Sources */,
