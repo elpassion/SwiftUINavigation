@@ -118,6 +118,22 @@ class NavigationCoordinator: NSObject, UINavigationControllerDelegate {
     super.init()
   }
   let view: NavigationControllerView
+
+  func navigationController(
+    _ navigationController: UINavigationController,
+    didShow viewController: UIViewController,
+    animated: Bool
+  ) {
+    let viewControllers = navigationController.viewControllers
+      .compactMap { $0 as? NavigationItemController }
+    let presentedStack = viewControllers.map { $0.navigationId }
+    let stateStack = view.items.map { $0.navigationId }
+    if stateStack != presentedStack {
+      view.items = viewControllers.map { $0.navigationId }.compactMap { navigationId in
+        view.items.first { $0.navigationId == navigationId }
+      }
+    }
+  }
 }
 
 class NavigationItemController: UIHostingController<AnyView> {
