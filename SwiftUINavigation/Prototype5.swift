@@ -92,3 +92,12 @@ struct NavigationControllerView: UIViewControllerRepresentable {
   }
 }
 
+class NavigationItemController: UIHostingController<AnyView> {
+  init(navigationId: UUID, view: AnyView) {
+    self.navigationId = navigationId
+    super.init(rootView: view)
+  }
+  required init?(coder aDecoder: NSCoder) { nil }
+  let navigationId: UUID
+}
+
