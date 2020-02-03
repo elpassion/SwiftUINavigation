@@ -101,3 +101,13 @@ class NavigationItemController: UIHostingController<AnyView> {
   let navigationId: UUID
 }
 
+let viewFactory: (NavigationItem) -> AnyView = { navigationItem in
+  switch navigationItem {
+  case let state as RootState:
+    return AnyView(RootView(state: state))
+  case let state as StepState:
+    return AnyView(StepView(state: state))
+  default:
+    fatalError()
+  }
+}
