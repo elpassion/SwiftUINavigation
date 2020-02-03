@@ -2,8 +2,11 @@ import SwiftUI
 import UIKit
 
 struct ContentView: View {
+  @ObservedObject var store = Store()
+
   var body: some View {
-    Text("Hello World")
+    NavigationControllerView(items: $store.navigation)
+      .edgesIgnoringSafeArea(.all)
   }
 }
 
@@ -61,5 +64,26 @@ struct StepView: View {
 protocol NavigationItem {}
 
 class Store: ObservableObject {
-  @Published var navigation: [NavigationItem] = []
+  @Published var navigation: [NavigationItem] = [RootState()]
 }
+
+// MARK: -
+
+struct NavigationControllerView: UIViewControllerRepresentable {
+  @Binding var items: [NavigationItem]
+
+  func makeUIViewController(
+    context: UIViewControllerRepresentableContext<Self>
+  ) -> UINavigationController {
+    let navigationController = UINavigationController()
+    return navigationController
+  }
+
+  func updateUIViewController(
+    _ navigationController: UINavigationController,
+    context: UIViewControllerRepresentableContext<Self>
+  ) {
+
+  }
+}
+
