@@ -7,6 +7,7 @@ struct ContentView: View {
   var body: some View {
     NavigationControllerView(items: $store.navigation)
       .edgesIgnoringSafeArea(.all)
+      .environmentObject(store)
   }
 }
 
@@ -88,7 +89,21 @@ struct NavigationControllerView: UIViewControllerRepresentable {
     _ navigationController: UINavigationController,
     context: UIViewControllerRepresentableContext<Self>
   ) {
-
+    let viewControllers = navigationController.viewControllers
+      .compactMap { $0 as? NavigationItemController }
+    let newViewControllers = items.map { item -> NavigationItemController in
+      let itemView = viewFactory(item)
+      let viewController = viewControllers.first { $0.navigationId == item.navigationId }
+      viewController?.rootView = itemView
+      return viewController
+        ?? NavigationItemController(navigationId: item.navigationId, view: itemView)
+    }
+    let presentedStack = viewControllers.map { $0.navigationId }
+    let stateStack = newViewControllers.map { $0.navigationId }
+    if presentedStack != stateStack {
+      let animate = !viewControllers.isEmpty
+      navigationController.setViewControllers(newViewControllers, animated: animate)
+    }
   }
 }
 
