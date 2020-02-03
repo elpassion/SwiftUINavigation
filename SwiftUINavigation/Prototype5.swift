@@ -82,6 +82,7 @@ struct NavigationControllerView: UIViewControllerRepresentable {
     context: UIViewControllerRepresentableContext<Self>
   ) -> UINavigationController {
     let navigationController = UINavigationController()
+    navigationController.delegate = context.coordinator
     return navigationController
   }
 
@@ -105,6 +106,18 @@ struct NavigationControllerView: UIViewControllerRepresentable {
       navigationController.setViewControllers(newViewControllers, animated: animate)
     }
   }
+
+  func makeCoordinator() -> NavigationCoordinator {
+    NavigationCoordinator(self)
+  }
+}
+
+class NavigationCoordinator: NSObject, UINavigationControllerDelegate {
+  init(_ view: NavigationControllerView) {
+    self.view = view
+    super.init()
+  }
+  let view: NavigationControllerView
 }
 
 class NavigationItemController: UIHostingController<AnyView> {
