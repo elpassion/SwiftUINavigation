@@ -20,7 +20,9 @@ struct ContentView_Previews: PreviewProvider {
 
 // MARK: -
 
-struct RootState: NavigationItem {}
+struct RootState: NavigationItem {
+  let navigationId = UUID()
+}
 
 struct RootView: View {
   @EnvironmentObject var store: Store
@@ -36,6 +38,7 @@ struct RootView: View {
 }
 
 struct StepState: NavigationItem {
+  let navigationId = UUID()
   let step: Int
 }
 
@@ -61,7 +64,9 @@ struct StepView: View {
 
 // MARK: -
 
-protocol NavigationItem {}
+protocol NavigationItem {
+  var navigationId: UUID { get }
+}
 
 class Store: ObservableObject {
   @Published var navigation: [NavigationItem] = [RootState()]
