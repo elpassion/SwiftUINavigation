@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3122298523E3849800256A2B /* Prototype4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122298423E3849800256A2B /* Prototype4.swift */; };
 		31584F1D23DE3FBF00ED3A8F /* Prototype3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31584F1C23DE3FBF00ED3A8F /* Prototype3.swift */; };
+		31CAC5A623E8CDB4002FC540 /* Prototype5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CAC5A523E8CDB4002FC540 /* Prototype5.swift */; };
 		31CF91AD23DD2BD0002C31DC /* Prototype2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CF91AC23DD2BD0002C31DC /* Prototype2.swift */; };
 		31F7FFB223DA79D7003038AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7FFB123DA79D7003038AD /* AppDelegate.swift */; };
 		31F7FFB423DA79D7003038AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7FFB323DA79D7003038AD /* SceneDelegate.swift */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		3122298423E3849800256A2B /* Prototype4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype4.swift; sourceTree = "<group>"; };
 		31584F1C23DE3FBF00ED3A8F /* Prototype3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype3.swift; sourceTree = "<group>"; };
+		31CAC5A523E8CDB4002FC540 /* Prototype5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype5.swift; sourceTree = "<group>"; };
 		31CF91AC23DD2BD0002C31DC /* Prototype2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype2.swift; sourceTree = "<group>"; };
 		31F7FFAE23DA79D7003038AD /* SwiftUINavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUINavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F7FFB123DA79D7003038AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				31CF91AC23DD2BD0002C31DC /* Prototype2.swift */,
 				31584F1C23DE3FBF00ED3A8F /* Prototype3.swift */,
 				3122298423E3849800256A2B /* Prototype4.swift */,
+				31CAC5A523E8CDB4002FC540 /* Prototype5.swift */,
 				31F7FFB323DA79D7003038AD /* SceneDelegate.swift */,
 			);
 			path = SwiftUINavigation;
@@ -149,6 +152,7 @@
 				31F7FFB223DA79D7003038AD /* AppDelegate.swift in Sources */,
 				31F7FFB423DA79D7003038AD /* SceneDelegate.swift in Sources */,
 				31F7FFB623DA79D7003038AD /* Prototype1.swift in Sources */,
+				31CAC5A623E8CDB4002FC540 /* Prototype5.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
