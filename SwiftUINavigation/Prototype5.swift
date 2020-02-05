@@ -21,9 +21,7 @@ struct ContentView_Previews: PreviewProvider {
 
 // MARK: -
 
-struct RootState: NavigationItem {
-  let navigationId = UUID()
-}
+struct RootState: NavigationItem {}
 
 struct RootView: View {
   @EnvironmentObject var store: Store
@@ -41,7 +39,6 @@ struct RootView: View {
 }
 
 struct StepState: NavigationItem {
-  let navigationId = UUID()
   let step: Int
 }
 
@@ -71,9 +68,7 @@ struct StepView: View {
 
 // MARK: -
 
-protocol NavigationItem {
-  var navigationId: UUID { get }
-}
+protocol NavigationItem {}
 
 class Store: ObservableObject {
   @Published var navigation: [NavigationItem] = [RootState()] {
@@ -101,19 +96,20 @@ struct NavigationControllerView: UIViewControllerRepresentable {
     context: UIViewControllerRepresentableContext<Self>
   ) {
     let viewControllers = navigationController.viewControllers
-      .compactMap { $0 as? NavigationItemController }
-    let newViewControllers = items.map { item -> NavigationItemController in
+      .compactMap { $0 as? UIHostingController<AnyView> }
+    let newViewControllers = items.enumerated().map { (index, item) -> UIHostingController<AnyView> in
       let itemView = viewFactory(item)
-      let viewController = viewControllers.first { $0.navigationId == item.navigationId }
-      viewController?.rootView = itemView
-      return viewController ??
-        NavigationItemController(navigationId: item.navigationId, view: itemView)
+      if (viewControllers.startIndex..<viewControllers.endIndex).contains(index) {
+        let viewController = viewControllers[index]
+        viewController.rootView = itemView
+        return viewController
+      }
+      return UIHostingController(rootView: itemView)
     }
-    let presentedStack = viewControllers.map { $0.navigationId }
-    let stateStack = items.map { $0.navigationId }
-    if presentedStack != stateStack {
+    if viewControllers.count != newViewControllers.count {
       let animate = !viewControllers.isEmpty
       navigationController.setViewControllers(newViewControllers, animated: animate)
+
     }
   }
 
@@ -137,24 +133,10 @@ class NavigationCoordinator: NSObject, UINavigationControllerDelegate {
     animated: Bool
   ) {
     let viewControllers = navigationController.viewControllers
-      .compactMap { $0 as? NavigationItemController }
-    let presentedStack = viewControllers.map { $0.navigationId }
-    let stateStack = view.items.map { $0.navigationId }
-    if stateStack != presentedStack {
-      view.items = presentedStack.compactMap { navigationId in
-        view.items.first { $0.navigationId == navigationId }
-      }
+    if viewControllers.count != view.items.count {
+      view.items = zip(view.items, viewControllers).map { $0.0 }
     }
   }
-}
-
-class NavigationItemController: UIHostingController<AnyView> {
-  init(navigationId: UUID, view: AnyView) {
-    self.navigationId = navigationId
-    super.init(rootView: view)
-  }
-  required init?(coder aDecoder: NSCoder) { nil }
-  let navigationId: UUID
 }
 
 let viewFactory: (NavigationItem) -> AnyView = { navigationItem in
