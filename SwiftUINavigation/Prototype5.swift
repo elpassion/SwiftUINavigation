@@ -2,7 +2,7 @@ import SwiftUI
 import UIKit
 
 struct ContentView: View {
-  @ObservedObject var store = Store()
+  @ObservedObject var store: Store = Store()
 
   var body: some View {
     NavigationControllerView(items: $store.navigation)
@@ -33,7 +33,9 @@ struct RootView: View {
       Text("Root").font(.title)
       Button(action: {
         self.store.navigation.append(StepState(step: 1))
-      }) { Text("Go to first step →") }
+      }) {
+        Text("Go to first step →")
+      }
     }
   }
 }
@@ -48,17 +50,21 @@ struct StepView: View {
   let state: StepState
   var body: some View {
     VStack(spacing: 16) {
-      Text("Step #\(state.step)").font(.title)
-      if state.step < 3 {
+      Text("Step \(state.step)").font(.title)
+      if state.step < 2 {
         Button(action: {
           self.store.navigation.append(StepState(step: self.state.step + 1))
-        }) { Text("Go to next step →") }
+        }) {
+          Text("Go to next step →")
+        }
       } else {
         Text("Done")
       }
       Button(action: {
         self.store.navigation.removeLast(self.store.navigation.count - 1)
-      }) { Text("← Go back to root") }
+      }) {
+        Text("← Go back to root")
+      }
     }
   }
 }
@@ -70,7 +76,11 @@ protocol NavigationItem {
 }
 
 class Store: ObservableObject {
-  @Published var navigation: [NavigationItem] = [RootState()]
+  @Published var navigation: [NavigationItem] = [RootState()] {
+    didSet {
+      print("^^^ \(navigation)")
+    }
+  }
 }
 
 // MARK: -
@@ -96,11 +106,11 @@ struct NavigationControllerView: UIViewControllerRepresentable {
       let itemView = viewFactory(item)
       let viewController = viewControllers.first { $0.navigationId == item.navigationId }
       viewController?.rootView = itemView
-      return viewController
-        ?? NavigationItemController(navigationId: item.navigationId, view: itemView)
+      return viewController ??
+        NavigationItemController(navigationId: item.navigationId, view: itemView)
     }
     let presentedStack = viewControllers.map { $0.navigationId }
-    let stateStack = newViewControllers.map { $0.navigationId }
+    let stateStack = items.map { $0.navigationId }
     if presentedStack != stateStack {
       let animate = !viewControllers.isEmpty
       navigationController.setViewControllers(newViewControllers, animated: animate)
@@ -108,15 +118,17 @@ struct NavigationControllerView: UIViewControllerRepresentable {
   }
 
   func makeCoordinator() -> NavigationCoordinator {
-    NavigationCoordinator(self)
+    NavigationCoordinator(view: self)
   }
 }
 
 class NavigationCoordinator: NSObject, UINavigationControllerDelegate {
-  init(_ view: NavigationControllerView) {
+
+  init(view: NavigationControllerView) {
     self.view = view
     super.init()
   }
+
   let view: NavigationControllerView
 
   func navigationController(
@@ -129,7 +141,7 @@ class NavigationCoordinator: NSObject, UINavigationControllerDelegate {
     let presentedStack = viewControllers.map { $0.navigationId }
     let stateStack = view.items.map { $0.navigationId }
     if stateStack != presentedStack {
-      view.items = viewControllers.map { $0.navigationId }.compactMap { navigationId in
+      view.items = presentedStack.compactMap { navigationId in
         view.items.first { $0.navigationId == navigationId }
       }
     }
