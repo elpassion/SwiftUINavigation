@@ -90,6 +90,8 @@ struct StepView: View {
           self.store.navigation = [self.store.navigation.first].compactMap { $0 }
         }) { Text("← Go back to root") }
       }
+    }.navigationBackGesture {
+      _ = self.store.navigation.removeLast()
     }
   }
 }
@@ -218,5 +220,47 @@ struct NavigationBackButton: View {
         Text("Back")
       }
     }
+  }
+}
+
+struct NavigationBackGesture: ViewModifier {
+  init(backAction: @escaping () -> Void) {
+    self.backAction = backAction
+  }
+
+  var backAction: () -> Void
+  @State var dragOffset: CGFloat = 0
+
+  func body(content: Content) -> some View {
+    content
+      .offset(x: dragOffset, y: 0)
+      .gesture(gesture)
+  }
+
+  var gesture: some Gesture {
+    DragGesture(minimumDistance: 1, coordinateSpace: .global)
+      .onChanged(gestureChanged)
+      .onEnded(gestureEnded)
+  }
+
+  func gestureChanged(_ value: DragGesture.Value) {
+    guard value.startLocation.x < 8 else { return }
+    dragOffset = value.translation.width
+  }
+
+  func gestureEnded(_ value: DragGesture.Value) {
+    guard value.startLocation.x < 8 else { return }
+    dragOffset = 0
+    let offset = value.translation.width
+    let velocity = value.location.x.distance(to: value.predictedEndLocation.x)
+    if offset + velocity >= 100 {
+      backAction()
+    }
+  }
+}
+
+extension View {
+  func navigationBackGesture(backAction: @escaping () -> Void) -> some View {
+    modifier(NavigationBackGesture(backAction: backAction))
   }
 }
