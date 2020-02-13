@@ -20,6 +20,6 @@ Open `SwiftUINavigation.xcodeproj` in Xcode and run the app.
 
 ## 📄 License
 
-Copyright © 2020 EL Passion
+Copyright © 2020 [EL Passion](https://www.elpassion.com)
 
 License: *TBD*
