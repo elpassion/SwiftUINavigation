@@ -171,6 +171,7 @@ struct NavigationStackView: View {
       EmptyView()
       ForEach(Array(items.enumerated()), id: \.element.navigationId) { index, item in
         self.viewFactory(item)
+          .allowsHitTesting(index == self.items.index(before: self.items.endIndex))
           .animation(.easeInOut(duration: 0.25))
           .transition(.move(edge: .trailing))
           .zIndex(Double(index))
