@@ -16,9 +16,7 @@ struct NavigationItemView<NavigationBar: View, Content: View>: View {
         .edgesIgnoringSafeArea(.all)
       VStack(spacing: 0) {
         navigationBar
-        ZStack {
-          content
-        }.frame(maxWidth: .infinity, maxHeight: .infinity)
+        content.frame(maxWidth: .infinity, maxHeight: .infinity)
       }
     }
   }
