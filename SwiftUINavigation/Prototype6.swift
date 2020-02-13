@@ -169,6 +169,15 @@ struct NavigationStackView: View {
   var body: some View {
     ZStack {
       EmptyView()
+      ForEach(Array(items.enumerated()), id: \.element.navigationId) { index, _ in
+        Color.black.opacity(0.2)
+          .edgesIgnoringSafeArea(.all)
+          .allowsHitTesting(false)
+          .transition(.asymmetric(
+            insertion: AnyTransition.opacity.animation(.easeInOut(duration: 0.2)),
+            removal: AnyTransition.opacity.animation(.easeInOut(duration: 0.3))))
+          .zIndex(Double(index) - 0.1)
+      }
       ForEach(Array(items.enumerated()), id: \.element.navigationId) { index, item in
         self.viewFactory(item)
           .allowsHitTesting(index == self.items.index(before: self.items.endIndex))
