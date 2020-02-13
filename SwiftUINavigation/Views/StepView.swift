@@ -64,3 +64,12 @@ struct StepView: View {
     })
   }
 }
+
+#if DEBUG
+struct StepView_Previews: PreviewProvider {
+  static var previews: some View {
+    StepView(state: StepState(step: 1))
+      .environmentObject(Store())
+  }
+}
+#endif
