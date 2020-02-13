@@ -68,7 +68,7 @@ struct StepView: View {
   var body: some View {
     NavigationItemView(navigationBar: {
       NavigationBarView(title: {
-        Text("Step \(self.state.step)").font(.headline)
+        Text("Step \(state.step)").font(.headline)
       }, leadingView: {
         NavigationBackButton {
           _ = self.store.navigation.removeLast()
