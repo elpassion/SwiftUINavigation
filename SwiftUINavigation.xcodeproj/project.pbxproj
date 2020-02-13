@@ -7,28 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3122298523E3849800256A2B /* Prototype4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3122298423E3849800256A2B /* Prototype4.swift */; };
-		31584F1D23DE3FBF00ED3A8F /* Prototype3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31584F1C23DE3FBF00ED3A8F /* Prototype3.swift */; };
-		31CAC5A623E8CDB4002FC540 /* Prototype5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CAC5A523E8CDB4002FC540 /* Prototype5.swift */; };
-		31CF91AD23DD2BD0002C31DC /* Prototype2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31CF91AC23DD2BD0002C31DC /* Prototype2.swift */; };
-		31D6E93123F4BC1E00DD4E1B /* Prototype6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31D6E93023F4BC1E00DD4E1B /* Prototype6.swift */; };
+		315D77EC23F603620059ED1F /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77EB23F603620059ED1F /* Store.swift */; };
+		315D77EE23F603850059ED1F /* RootState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77ED23F603850059ED1F /* RootState.swift */; };
+		315D77F023F6039D0059ED1F /* StepState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77EF23F6039D0059ED1F /* StepState.swift */; };
+		315D77F323F603B60059ED1F /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77F223F603B60059ED1F /* RootView.swift */; };
+		315D77F523F603CE0059ED1F /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77F423F603CE0059ED1F /* StepView.swift */; };
+		315D77F723F603F00059ED1F /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77F623F603F00059ED1F /* ViewFactory.swift */; };
+		315D77F923F604080059ED1F /* NavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77F823F604080059ED1F /* NavigationItem.swift */; };
+		315D77FB23F604470059ED1F /* NavigationItemViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77FA23F604470059ED1F /* NavigationItemViewFactory.swift */; };
+		315D77FD23F604650059ED1F /* NavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77FC23F604650059ED1F /* NavigationStackView.swift */; };
+		315D77FF23F604880059ED1F /* NavigationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D77FE23F604880059ED1F /* NavigationItemView.swift */; };
+		315D780123F6049F0059ED1F /* NavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D780023F6049F0059ED1F /* NavigationBarView.swift */; };
+		315D780323F604B70059ED1F /* NavigationBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D780223F604B70059ED1F /* NavigationBackButton.swift */; };
+		315D780523F604C80059ED1F /* NavigationBackGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D780423F604C80059ED1F /* NavigationBackGesture.swift */; };
+		315D780723F604F30059ED1F /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 315D780623F604F30059ED1F /* AppView.swift */; };
 		31F7FFB223DA79D7003038AD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7FFB123DA79D7003038AD /* AppDelegate.swift */; };
 		31F7FFB423DA79D7003038AD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7FFB323DA79D7003038AD /* SceneDelegate.swift */; };
-		31F7FFB623DA79D7003038AD /* Prototype1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F7FFB523DA79D7003038AD /* Prototype1.swift */; };
 		31F7FFB823DA79D8003038AD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31F7FFB723DA79D8003038AD /* Assets.xcassets */; };
 		31F7FFBE23DA79D8003038AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 31F7FFBC23DA79D8003038AD /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3122298423E3849800256A2B /* Prototype4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype4.swift; sourceTree = "<group>"; };
-		31584F1C23DE3FBF00ED3A8F /* Prototype3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype3.swift; sourceTree = "<group>"; };
-		31CAC5A523E8CDB4002FC540 /* Prototype5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype5.swift; sourceTree = "<group>"; };
-		31CF91AC23DD2BD0002C31DC /* Prototype2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype2.swift; sourceTree = "<group>"; };
-		31D6E93023F4BC1E00DD4E1B /* Prototype6.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype6.swift; sourceTree = "<group>"; };
+		315D77EB23F603620059ED1F /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		315D77ED23F603850059ED1F /* RootState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootState.swift; sourceTree = "<group>"; };
+		315D77EF23F6039D0059ED1F /* StepState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepState.swift; sourceTree = "<group>"; };
+		315D77F223F603B60059ED1F /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		315D77F423F603CE0059ED1F /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		315D77F623F603F00059ED1F /* ViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFactory.swift; sourceTree = "<group>"; };
+		315D77F823F604080059ED1F /* NavigationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItem.swift; sourceTree = "<group>"; };
+		315D77FA23F604470059ED1F /* NavigationItemViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemViewFactory.swift; sourceTree = "<group>"; };
+		315D77FC23F604650059ED1F /* NavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackView.swift; sourceTree = "<group>"; };
+		315D77FE23F604880059ED1F /* NavigationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationItemView.swift; sourceTree = "<group>"; };
+		315D780023F6049F0059ED1F /* NavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarView.swift; sourceTree = "<group>"; };
+		315D780223F604B70059ED1F /* NavigationBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackButton.swift; sourceTree = "<group>"; };
+		315D780423F604C80059ED1F /* NavigationBackGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBackGesture.swift; sourceTree = "<group>"; };
+		315D780623F604F30059ED1F /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		31F7FFAE23DA79D7003038AD /* SwiftUINavigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUINavigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31F7FFB123DA79D7003038AD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31F7FFB323DA79D7003038AD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		31F7FFB523DA79D7003038AD /* Prototype1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prototype1.swift; sourceTree = "<group>"; };
 		31F7FFB723DA79D8003038AD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31F7FFBD23DA79D8003038AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		31F7FFBF23DA79D8003038AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,6 +61,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		315D77E923F603470059ED1F /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				315D780223F604B70059ED1F /* NavigationBackButton.swift */,
+				315D780423F604C80059ED1F /* NavigationBackGesture.swift */,
+				315D780023F6049F0059ED1F /* NavigationBarView.swift */,
+				315D77F823F604080059ED1F /* NavigationItem.swift */,
+				315D77FE23F604880059ED1F /* NavigationItemView.swift */,
+				315D77FA23F604470059ED1F /* NavigationItemViewFactory.swift */,
+				315D77FC23F604650059ED1F /* NavigationStackView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		315D77EA23F603550059ED1F /* State */ = {
+			isa = PBXGroup;
+			children = (
+				315D77ED23F603850059ED1F /* RootState.swift */,
+				315D77EF23F6039D0059ED1F /* StepState.swift */,
+				315D77EB23F603620059ED1F /* Store.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		315D77F123F603AA0059ED1F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				315D780623F604F30059ED1F /* AppView.swift */,
+				315D77F223F603B60059ED1F /* RootView.swift */,
+				315D77F423F603CE0059ED1F /* StepView.swift */,
+				315D77F623F603F00059ED1F /* ViewFactory.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		315D780823F6051B0059ED1F /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				31F7FFB123DA79D7003038AD /* AppDelegate.swift */,
+				31F7FFB323DA79D7003038AD /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		315D780923F606490059ED1F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				31F7FFB723DA79D8003038AD /* Assets.xcassets */,
+				31F7FFBF23DA79D8003038AD /* Info.plist */,
+				31F7FFBC23DA79D8003038AD /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		31F7FFA523DA79D7003038AD = {
 			isa = PBXGroup;
 			children = (
@@ -64,17 +134,11 @@
 		31F7FFB023DA79D7003038AD /* SwiftUINavigation */ = {
 			isa = PBXGroup;
 			children = (
-				31F7FFB123DA79D7003038AD /* AppDelegate.swift */,
-				31F7FFB723DA79D8003038AD /* Assets.xcassets */,
-				31F7FFBF23DA79D8003038AD /* Info.plist */,
-				31F7FFBC23DA79D8003038AD /* LaunchScreen.storyboard */,
-				31F7FFB523DA79D7003038AD /* Prototype1.swift */,
-				31CF91AC23DD2BD0002C31DC /* Prototype2.swift */,
-				31584F1C23DE3FBF00ED3A8F /* Prototype3.swift */,
-				3122298423E3849800256A2B /* Prototype4.swift */,
-				31CAC5A523E8CDB4002FC540 /* Prototype5.swift */,
-				31D6E93023F4BC1E00DD4E1B /* Prototype6.swift */,
-				31F7FFB323DA79D7003038AD /* SceneDelegate.swift */,
+				315D780823F6051B0059ED1F /* Application */,
+				315D77E923F603470059ED1F /* Navigation */,
+				315D780923F606490059ED1F /* Resources */,
+				315D77EA23F603550059ED1F /* State */,
+				315D77F123F603AA0059ED1F /* Views */,
 			);
 			path = SwiftUINavigation;
 			sourceTree = "<group>";
@@ -149,14 +213,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31584F1D23DE3FBF00ED3A8F /* Prototype3.swift in Sources */,
-				3122298523E3849800256A2B /* Prototype4.swift in Sources */,
-				31CF91AD23DD2BD0002C31DC /* Prototype2.swift in Sources */,
+				315D780523F604C80059ED1F /* NavigationBackGesture.swift in Sources */,
+				315D780723F604F30059ED1F /* AppView.swift in Sources */,
+				315D77F023F6039D0059ED1F /* StepState.swift in Sources */,
+				315D77F723F603F00059ED1F /* ViewFactory.swift in Sources */,
+				315D77FF23F604880059ED1F /* NavigationItemView.swift in Sources */,
+				315D77EC23F603620059ED1F /* Store.swift in Sources */,
+				315D77F923F604080059ED1F /* NavigationItem.swift in Sources */,
 				31F7FFB223DA79D7003038AD /* AppDelegate.swift in Sources */,
+				315D77EE23F603850059ED1F /* RootState.swift in Sources */,
+				315D77FD23F604650059ED1F /* NavigationStackView.swift in Sources */,
+				315D77F523F603CE0059ED1F /* StepView.swift in Sources */,
 				31F7FFB423DA79D7003038AD /* SceneDelegate.swift in Sources */,
-				31F7FFB623DA79D7003038AD /* Prototype1.swift in Sources */,
-				31CAC5A623E8CDB4002FC540 /* Prototype5.swift in Sources */,
-				31D6E93123F4BC1E00DD4E1B /* Prototype6.swift in Sources */,
+				315D780123F6049F0059ED1F /* NavigationBarView.swift in Sources */,
+				315D77F323F603B60059ED1F /* RootView.swift in Sources */,
+				315D77FB23F604470059ED1F /* NavigationItemViewFactory.swift in Sources */,
+				315D780323F604B70059ED1F /* NavigationBackButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SwiftUINavigation/Info.plist;
+				INFOPLIST_FILE = SwiftUINavigation/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -316,7 +388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = SwiftUINavigation/Info.plist;
+				INFOPLIST_FILE = SwiftUINavigation/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
