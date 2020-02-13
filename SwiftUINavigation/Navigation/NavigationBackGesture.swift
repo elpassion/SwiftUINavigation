@@ -17,10 +17,14 @@ struct NavigationBackGesture: ViewModifier {
   var gesture: some Gesture {
     DragGesture(minimumDistance: 8, coordinateSpace: .global)
       .updating($dragOffset, body: { value, state, _ in
-        state = self.shouldHandleGesture(for: value) ? value.translation.width : 0
+        if self.shouldHandleGesture(for: value) {
+          state = value.translation.width
+        }
       })
       .onEnded({ value in
-        if self.shouldTriggerAction(for: value) { self.action() }
+        if self.shouldTriggerAction(for: value) {
+          self.action()
+        }
       })
   }
 
