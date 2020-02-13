@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "31F7FFAD23DA79D7003038AD"
-               BuildableName = "SwiftUINavigation.app"
-               BlueprintName = "SwiftUINavigation"
+               BuildableName = "SwiftUINavigationDemo.app"
+               BlueprintName = "SwiftUINavigationDemo"
                ReferencedContainer = "container:SwiftUINavigation.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "31F7FFAD23DA79D7003038AD"
-            BuildableName = "SwiftUINavigation.app"
-            BlueprintName = "SwiftUINavigation"
+            BuildableName = "SwiftUINavigationDemo.app"
+            BlueprintName = "SwiftUINavigationDemo"
             ReferencedContainer = "container:SwiftUINavigation.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "31F7FFAD23DA79D7003038AD"
-            BuildableName = "SwiftUINavigation.app"
-            BlueprintName = "SwiftUINavigation"
+            BuildableName = "SwiftUINavigationDemo.app"
+            BlueprintName = "SwiftUINavigationDemo"
             ReferencedContainer = "container:SwiftUINavigation.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
