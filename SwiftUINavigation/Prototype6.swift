@@ -90,9 +90,9 @@ struct StepView: View {
           self.store.navigation = [self.store.navigation.first].compactMap { $0 }
         }) { Text("← Go back to root") }
       }
-    }.navigationBackGesture {
+    }.navigationBackGesture(action: {
       _ = self.store.navigation.removeLast()
-    }
+    })
   }
 }
 
@@ -224,12 +224,12 @@ struct NavigationBackButton: View {
 }
 
 struct NavigationBackGesture: ViewModifier {
-  init(backAction: @escaping () -> Void) {
-    self.backAction = backAction
+  init(action: @escaping () -> Void) {
+    self.action = action
   }
 
-  var backAction: () -> Void
-  @State var dragOffset: CGFloat = 0
+  var action: () -> Void
+  @GestureState var dragOffset: CGFloat = 0
 
   func body(content: Content) -> some View {
     content
@@ -239,28 +239,20 @@ struct NavigationBackGesture: ViewModifier {
 
   var gesture: some Gesture {
     DragGesture(minimumDistance: 8, coordinateSpace: .global)
-      .onChanged(gestureChanged)
-      .onEnded(gestureEnded)
-  }
-
-  func gestureChanged(_ value: DragGesture.Value) {
-    guard shouldHandleGesture(for: value) else { return }
-    dragOffset = value.translation.width
-  }
-
-  func gestureEnded(_ value: DragGesture.Value) {
-    guard shouldHandleGesture(for: value) else { return }
-    dragOffset = 0
-    if shouldTriggerBackAction(for: value) {
-      backAction()
-    }
+      .updating($dragOffset, body: { value, state, _ in
+        state = self.shouldHandleGesture(for: value) ? value.translation.width : 0
+      })
+      .onEnded({ value in
+        if self.shouldTriggerAction(for: value) { self.action() }
+      })
   }
 
   func shouldHandleGesture(for value: DragGesture.Value) -> Bool {
     value.startLocation.x <= 32
   }
 
-  func shouldTriggerBackAction(for value: DragGesture.Value) -> Bool {
+  func shouldTriggerAction(for value: DragGesture.Value) -> Bool {
+    guard shouldHandleGesture(for: value) else { return false }
     let offset = value.translation.width
     let velocity = value.location.x.distance(to: value.predictedEndLocation.x)
     return offset + velocity >= 128
@@ -268,7 +260,7 @@ struct NavigationBackGesture: ViewModifier {
 }
 
 extension View {
-  func navigationBackGesture(backAction: @escaping () -> Void) -> some View {
-    modifier(NavigationBackGesture(backAction: backAction))
+  func navigationBackGesture(action: @escaping () -> Void) -> some View {
+    modifier(NavigationBackGesture(action: action))
   }
 }
