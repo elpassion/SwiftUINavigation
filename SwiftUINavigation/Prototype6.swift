@@ -33,6 +33,7 @@ struct RootState: NavigationItem {
 struct StepState: NavigationItem {
   let navigationId = UUID()
   let step: Int
+  var counter: Int = 0
 }
 
 // MARK: - Views
@@ -79,6 +80,32 @@ struct StepView: View {
     }) {
       VStack(spacing: 16) {
         Text("Step #\(state.step)").font(.title)
+        HStack {
+          Button(action: {
+            self.store.navigation = self.store.navigation.map { item in
+              guard item.navigationId == self.state.navigationId else { return item }
+              var state = self.state
+              state.counter -= 1
+              return state
+            }
+          }) {
+            Image(systemName: "minus.circle")
+              .font(.system(size: 22))
+          }.padding()
+          Text("  \(state.counter)  ")
+            .frame(width: 128)
+          Button(action: {
+            self.store.navigation = self.store.navigation.map { item in
+              guard item.navigationId == self.state.navigationId else { return item }
+              var state = self.state
+              state.counter += 1
+              return state
+            }
+          }) {
+            Image(systemName: "plus.circle.fill")
+              .font(.system(size: 22))
+          }.padding()
+        }
         if state.step < 3 {
           Button(action: {
             self.store.navigation.append(StepState(step: self.state.step + 1))
