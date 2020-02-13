@@ -196,9 +196,9 @@ struct NavigationBarView<Title: View, LeadingView: View, TrailingView: View>: Vi
         .shadow(radius: 1)
       ZStack {
         title
-        HStack(alignment: .firstTextBaseline, spacing: 16) {
+        HStack(alignment: .firstTextBaseline) {
           leadingView
-          Spacer()
+          Spacer().padding(.horizontal)
           trailingView
         }
       }.padding()
@@ -238,24 +238,32 @@ struct NavigationBackGesture: ViewModifier {
   }
 
   var gesture: some Gesture {
-    DragGesture(minimumDistance: 1, coordinateSpace: .global)
+    DragGesture(minimumDistance: 8, coordinateSpace: .global)
       .onChanged(gestureChanged)
       .onEnded(gestureEnded)
   }
 
   func gestureChanged(_ value: DragGesture.Value) {
-    guard value.startLocation.x < 8 else { return }
+    guard shouldHandleGesture(for: value) else { return }
     dragOffset = value.translation.width
   }
 
   func gestureEnded(_ value: DragGesture.Value) {
-    guard value.startLocation.x < 8 else { return }
+    guard shouldHandleGesture(for: value) else { return }
     dragOffset = 0
-    let offset = value.translation.width
-    let velocity = value.location.x.distance(to: value.predictedEndLocation.x)
-    if offset + velocity >= 100 {
+    if shouldTriggerBackAction(for: value) {
       backAction()
     }
+  }
+
+  func shouldHandleGesture(for value: DragGesture.Value) -> Bool {
+    value.startLocation.x <= 32
+  }
+
+  func shouldTriggerBackAction(for value: DragGesture.Value) -> Bool {
+    let offset = value.translation.width
+    let velocity = value.location.x.distance(to: value.predictedEndLocation.x)
+    return offset + velocity >= 128
   }
 }
 
