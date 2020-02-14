@@ -51,13 +51,23 @@ struct StepView: View {
         if state.step < 3 {
           Button(action: {
             self.store.navigation.append(StepState(step: self.state.step + 1))
-          }) { Text("Go to next step →") }
+          }) {
+            HStack {
+              Text("Go to next step")
+              Text("→").flipsForRightToLeftLayoutDirection(true)
+            }
+          }
         } else {
           Text("Done")
         }
         Button(action: {
           self.store.navigation = [self.store.navigation.first].compactMap { $0 }
-        }) { Text("← Go back to root") }
+        }) {
+          HStack {
+            Text("←").flipsForRightToLeftLayoutDirection(true)
+            Text("Go back to root")
+          }
+        }
       }
     }.navigationBackGesture(action: {
       _ = self.store.navigation.removeLast()

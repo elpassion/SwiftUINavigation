@@ -14,7 +14,12 @@ struct RootView: View {
         Text("Root").font(.title)
         Button(action: {
           self.store.navigation.append(StepState(step: 1))
-        }) { Text("Go to first step →") }
+        }) {
+          HStack {
+            Text("Go to first step")
+            Text("→").flipsForRightToLeftLayoutDirection(true)
+          }
+        }
       }
     })
   }

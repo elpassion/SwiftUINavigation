@@ -11,6 +11,7 @@ struct NavigationBackButton: View {
     Button(action: action) {
       HStack {
         Image(systemName: "chevron.left")
+          .flipsForRightToLeftLayoutDirection(true)
         Text("Back")
       }
     }
