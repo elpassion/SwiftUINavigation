@@ -7,36 +7,66 @@ struct NavigationBackGesture: ViewModifier {
 
   var action: () -> Void
   @GestureState var dragOffset: CGFloat = 0
+  @Environment(\.layoutDirection) var layoutDirection
 
   func body(content: Content) -> some View {
-    content
-      .offset(x: dragOffset, y: 0)
-      .gesture(gesture)
+    GeometryReader { geometry in
+      content
+        .offset(x: self.dragOffset, y: 0)
+        .gesture(DragGesture(minimumDistance: 8, coordinateSpace: .global)
+          .updating(self.$dragOffset, body: { value, state, _ in
+            if self.shouldHandleGesture(for: value, geometry, self.layoutDirection) {
+              switch self.layoutDirection {
+              case .leftToRight:
+                state = value.translation.width
+              case .rightToLeft:
+                state = -value.translation.width
+              @unknown default:
+                fatalError()
+              }
+            }
+          })
+          .onEnded({ value in
+            if self.shouldTriggerAction(for: value, geometry, self.layoutDirection) {
+              self.action()
+            }
+          }))
+    }
   }
 
-  var gesture: some Gesture {
-    DragGesture(minimumDistance: 8, coordinateSpace: .global)
-      .updating($dragOffset, body: { value, state, _ in
-        if self.shouldHandleGesture(for: value) {
-          state = value.translation.width
-        }
-      })
-      .onEnded({ value in
-        if self.shouldTriggerAction(for: value) {
-          self.action()
-        }
-      })
+  func shouldHandleGesture(
+    for value: DragGesture.Value,
+    _ geometry: GeometryProxy,
+    _ layoutDirection: LayoutDirection
+  ) -> Bool {
+    switch layoutDirection {
+    case .leftToRight:
+      return value.startLocation.x <= 32
+    case .rightToLeft:
+      return value.startLocation.x >= geometry.frame(in: .global).maxX - 32
+    @unknown default:
+      fatalError()
+    }
   }
 
-  func shouldHandleGesture(for value: DragGesture.Value) -> Bool {
-    value.startLocation.x <= 32
-  }
-
-  func shouldTriggerAction(for value: DragGesture.Value) -> Bool {
-    guard shouldHandleGesture(for: value) else { return false }
+  func shouldTriggerAction(
+    for value: DragGesture.Value,
+    _ geometry: GeometryProxy,
+    _ layoutDirection: LayoutDirection
+  ) -> Bool {
+    guard shouldHandleGesture(for: value, geometry, layoutDirection) else {
+      return false
+    }
     let offset = value.translation.width
     let velocity = value.location.x.distance(to: value.predictedEndLocation.x)
-    return offset + velocity >= 128
+    switch layoutDirection {
+    case .leftToRight:
+      return offset + velocity >= 128
+    case .rightToLeft:
+      return offset + velocity <= -128
+    @unknown default:
+      fatalError()
+    }
   }
 }
 
