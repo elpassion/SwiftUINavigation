@@ -54,4 +54,4 @@ Open `SwiftUINavigation.xcodeproj` in Xcode and run the app.
 
 Copyright © 2020 [EL Passion](https://www.elpassion.com)
 
-License: *TBD*
+License: [GNU GPLv3](LICENSE)
