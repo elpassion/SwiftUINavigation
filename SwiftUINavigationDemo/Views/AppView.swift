@@ -5,7 +5,7 @@ struct AppView: View {
 
   var body: some View {
     NavigationStackView(
-      items: $store.navigation,
+      items: store.navigation,
       viewFactory: navigationItemViewFactory
     )
   }
