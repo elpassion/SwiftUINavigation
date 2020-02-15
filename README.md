@@ -8,7 +8,33 @@ Unidirectional data flow driven navigation for SwiftUI applications
 
 ## 📝 Description
 
-This project explores ways to implement navigation in a SwiftUI application, using unidirectional data flow architecture.
+This project explores ways to implement navigation in a SwiftUI application, using unidirectional data flow architecture. 
+
+### 🎯 Goals: 
+
+- [x] Navigate between views in a similar way that UIKit allows
+  - `NavigationStackView` provides behavior similar to `UINavigationController`
+  - `NavigationBackGesture` provides "swipe from edge to go back" behavior known from `UINavigationController`
+- [x] Implementation compatible with unidirectional data flow architecture
+  - `NavigationItem` provides an interface for a state of a view user can navigate to
+  - `[NavigationItem]` array is a single source of truth for `NavigationStackView`
+  - `NavigationStackView` can not mutate the state itself
+  - State changes are visualized by `NavigationStackView`
+- [x] Easily customizable appearance
+  - All included views provide a basic implementation that mimics `UINavigationController` look and feel, but can be replaced with any custom view if needed
+  - Because no `UINavigationController` is used under the hood, there are no limitations or issues with appearance customizations in contrast to `NavigationView` provided by SwiftUI
+
+### 🧩 Components
+
+Component | Description
+:--- | :---
+[`NavigationItem`](SwiftUINavigationDemo/Navigation/NavigationItem.swift) | Protocol of a **state model** that represents an item on navigation stack
+[`NavigationItemView`](SwiftUINavigationDemo/Navigation/NavigationItemView.swift) | **View** that represents navigation item
+[`NavigationItemViewFactory`](SwiftUINavigationDemo/Navigation/NavigationItemViewFactory.swift) | **Function** that creates a view for given navigation item
+[`NavigationStackView`](SwiftUINavigationDemo/Navigation/NavigationStackView.swift) | **View** that represents stack of navigation items, as `UINavigationController` does
+[`NavigationBarView`](SwiftUINavigationDemo/Navigation/NavigationBarView.swift) | **View** that represents navigation bar
+[`NavigationBackButton`](SwiftUINavigationDemo/Navigation/NavigationBackButton.swift) | Back button **view** that can be displayed on navigation bar
+[`NavigationBackGesture`](SwiftUINavigationDemo/Navigation/NavigationBackGesture.swift) | **View modifier** that attaches a "swipe from edge to go back" gesture to the navigation item view
 
 ### ➡️ Demo app
 
@@ -29,18 +55,6 @@ View | Description
 [`AppView`](SwiftUINavigationDemo/Views/AppView.swift) | Main **view** of the app containing navigation stack
 [`RootView`](SwiftUINavigationDemo/Views/AppView.swift) | Root screen **view**, initial screen of the app
 [`StepView`](SwiftUINavigationDemo/Views/AppView.swift) | Step screen **view**
-
-### 🧩 Navigation components
-
-Component | Description
-:--- | :---
-[`NavigationItem`](SwiftUINavigationDemo/Navigation/NavigationItem.swift) | Protocol of a **state model** that represents an item on navigation stack
-[`NavigationItemView`](SwiftUINavigationDemo/Navigation/NavigationItemView.swift) | **View** that represents navigation item
-[`NavigationItemViewFactory`](SwiftUINavigationDemo/Navigation/NavigationItemViewFactory.swift) | **Function** that creates a view for given navigation item
-[`NavigationStackView`](SwiftUINavigationDemo/Navigation/NavigationStackView.swift) | **View** that represents stack of navigation items, as `UINavigationController` does
-[`NavigationBarView`](SwiftUINavigationDemo/Navigation/NavigationBarView.swift) | **View** that represents navigation bar
-[`NavigationBackButton`](SwiftUINavigationDemo/Navigation/NavigationBackButton.swift) | Back button **view** that can be displayed on navigation bar
-[`NavigationBackGesture`](SwiftUINavigationDemo/Navigation/NavigationBackGesture.swift) | **View modifier** that attaches a "swipe from edge to go back" gesture to the navigation item view
 
 ## 🛠 Setup
 
